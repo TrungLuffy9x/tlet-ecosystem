@@ -1,0 +1,108 @@
+import React, { useState } from "react";
+import { Menu, X, ExternalLink } from "lucide-react";
+
+interface NavbarProps {
+	onRequestOpen: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onRequestOpen }) => {
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+	return (
+		<header className="sticky top-0 z-[999] bg-slate-950/90 border-b border-slate-800 backdrop-blur-md shadow-md">
+			<div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+				{/* Logo Column */}
+				<a href="#" className="flex items-center transition-colors shrink-0 group" aria-label="Tlét Home">
+					<img src="/TletFit.png" alt="Tlét Logo" className="h-10 w-auto object-contain group-hover:scale-105 transition-transform" />
+				</a>
+
+				{/* Center Desktop Navigation Menu */}
+				<nav className="hidden lg:flex items-center gap-8 text-sm font-semibold">
+					<a href="#services" className="text-slate-300 hover:text-primary transition-colors">
+						<span>Dịch vụ</span>
+					</a>
+					<a href="#features" className="text-slate-300 hover:text-primary transition-colors">
+						<span>So sánh</span>
+					</a>
+					<a href="#support" className="text-slate-300 hover:text-primary transition-colors">
+						<span>Hỗ trợ & API</span>
+					</a>
+					<a href="#faq" className="text-slate-300 hover:text-primary transition-colors">
+						<span>FAQ</span>
+					</a>
+				</nav>
+
+				{/* Right Action Buttons */}
+				<div className="hidden sm:flex items-center gap-2.5">
+					<button
+						onClick={onRequestOpen}
+						className="px-4 py-1.5 text-xs font-semibold text-slate-300 hover:text-primary bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-primary/50 rounded-full transition-all active:scale-95"
+					>
+						Request Content
+					</button>
+
+					<a
+						href="#services"
+						className="px-4.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 rounded-full shadow-md shadow-rose-500/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-1.5"
+					>
+						<span>Trải nghiệm</span>
+						<ExternalLink size={13} />
+					</a>
+				</div>
+
+				{/* Mobile Menu Button */}
+				<button
+					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+					className="lg:hidden p-2 text-slate-400 hover:text-white rounded-lg bg-slate-900 border border-slate-800"
+				>
+					{mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+				</button>
+			</div>
+
+			{/* Mobile Dropdown Menu */}
+			{mobileMenuOpen && (
+				<div className="lg:hidden bg-slate-950 border-b border-slate-800 p-4 space-y-3 animate-in fade-in duration-200">
+					<a
+						href="#services"
+						onClick={() => setMobileMenuOpen(false)}
+						className="block py-2 px-3 rounded-lg text-slate-300 hover:text-primary hover:bg-slate-900 text-sm font-semibold"
+					>
+						Dịch vụ chính
+					</a>
+					<a
+						href="#features"
+						onClick={() => setMobileMenuOpen(false)}
+						className="block py-2 px-3 rounded-lg text-slate-300 hover:text-primary hover:bg-slate-900 text-sm font-semibold"
+					>
+						So sánh & Đột phá
+					</a>
+					<a
+						href="#support"
+						onClick={() => setMobileMenuOpen(false)}
+						className="block py-2 px-3 rounded-lg text-slate-300 hover:text-primary hover:bg-slate-900 text-sm font-semibold"
+					>
+						Hỗ trợ & API
+					</a>
+					<a
+						href="#faq"
+						onClick={() => setMobileMenuOpen(false)}
+						className="block py-2 px-3 rounded-lg text-slate-300 hover:text-primary hover:bg-slate-900 text-sm font-semibold"
+					>
+						FAQ
+					</a>
+					<div className="pt-2 border-t border-slate-900 flex gap-2">
+						<button
+							onClick={() => {
+								setMobileMenuOpen(false);
+								onRequestOpen();
+							}}
+							className="w-full text-center py-2 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold rounded-full"
+						>
+							Request Content
+						</button>
+					</div>
+				</div>
+			)}
+		</header>
+	);
+};

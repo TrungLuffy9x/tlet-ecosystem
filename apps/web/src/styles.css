@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+@theme {
+  /* Override Tailwind's default colors with Elysia theme matching tlettruyen & tletfit */
+  --color-primary: #ff69b4;
+  --color-primary-strong: #ff1493;
+  --color-primary-light: rgba(255, 105, 180, 0.16);
+  --color-secondary: oklch(71.4% 0.203 305.504);
+
+  /* Replace slate with Elysia's dark theme colors */
+  --color-slate-950: #161618;
+  /* bg-alt */
+  --color-slate-900: #1b1b1f;
+  /* bg main */
+  --color-slate-800: #202127;
+  /* surface */
+  --color-slate-700: #292a30;
+  /* surface-hover */
+  --color-slate-600: #3c3f44;
+  /* line / border */
+  --color-slate-500: #6a6a71;
+  --color-slate-400: #98989f;
+  /* muted */
+  --color-slate-300: #dfdfd6;
+  /* text main */
+  --color-slate-200: #f6f6f7;
+  --color-slate-100: #ffffff;
+
+  /* Elysia specific colors */
+  --color-elysia-green: var(--green);
+  --color-elysia-blue: var(--blue);
+  --color-elysia-brand: var(--brand);
+}
+
+@layer base {
+  h1 {
+    @apply leading-tight text-4xl font-bold bg-gradient-to-r from-sky-300 via-violet-400 to-rose-400 bg-clip-text text-transparent;
+  }
+
+  h2 {
+    @apply leading-tight text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-teal-300 to-indigo-400 bg-clip-text text-transparent;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold leading-tight;
+  }
+
+  a {
+    @apply transition-all hover:text-primary;
+  }
+
+  a.primary,
+  button.primary {
+    @apply text-primary hover:text-secondary transition-all;
+  }
+
+  button,
+  .button {
+    @apply transition-all cursor-pointer;
+  }
+
+  button.primary-btn,
+  .button.primary-btn {
+    @apply transition-all bg-gradient-to-br from-rose-400 to-pink-400 rounded-full px-6 py-3 shadow-lg shadow-pink-400/40 text-white font-semibold flex items-center justify-center gap-2;
+  }
+
+  .title,
+  .label,
+  label {
+    @apply font-bold leading-normal;
+  }
+
+  button,
+  a,
+  [role="button"],
+  .action-box {
+    cursor: pointer;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    --tw-gradient-position: to bottom right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+}
+
+:root {
+  --surface: #202127;
+  --surface-hover: #292a30;
+  --line: #3c3f44;
+  --muted: #98989f;
+  --text: #dfdfd6;
+  --brand: #ff69b4;
+  --brand-strong: #ff1493;
+  --brand-light: rgba(255, 105, 180, 0.16);
+  --green: #3dd68c;
+  --blue: #a8b1ff;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-slate-900);
+  color: var(--color-slate-400);
+  @apply leading-relaxed text-sm;
+  font-family: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Animations */
+@keyframes pulse-slow {
+	0%, 100% { opacity: 0.35; transform: scale(1); }
+	50% { opacity: 0.75; transform: scale(1.08); }
+}
+
+@keyframes float {
+	0%, 100% { transform: translateY(0px); }
+	50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+	0% { background-position: -200% 0; }
+	100% { background-position: 200% 0; }
+}
+
+.animate-pulse-slow {
+	animation: pulse-slow 8s infinite ease-in-out;
+}
+
+.animate-float {
+	animation: float 6s infinite ease-in-out;
+}
+
+.animate-shimmer {
+	background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%);
+	background-size: 200% 100%;
+	animation: shimmer 3s infinite;
+}
+
+/* Glassmorphism & Neon Glow Utilities */
+.glass-panel {
+	background: rgba(22, 22, 24, 0.75);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+	transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+	background: rgba(32, 33, 39, 0.85);
+	border-color: rgba(255, 105, 180, 0.35);
+	box-shadow: 0 20px 45px -15px rgba(255, 105, 180, 0.2), 0 0 25px 0 rgba(168, 177, 255, 0.12);
+	transform: translateY(-4px);
+}
+
+/* Sleek Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-slate-950);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-slate-700);
+	border-radius: 9999px;
+	border: 2px solid var(--color-slate-950);
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-primary);
+}
