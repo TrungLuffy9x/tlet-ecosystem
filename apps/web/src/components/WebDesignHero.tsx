@@ -17,10 +17,7 @@ export const WebDesignHero: React.FC<WebDesignHeroProps> = ({ onConsultationOpen
 
 				{/* Main Title */}
 				<h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
-					THIẾT KẾ WEBSITE{" "}
-					<span className="bg-gradient-to-r from-cyan-300 via-teal-300 to-indigo-400 bg-clip-text text-transparent">
-						HIỆN ĐẠI & ĐỘT PHÁ
-					</span>
+					THIẾT KẾ WEBSITE HIỆN ĐẠI & ĐỘT PHÁ
 				</h1>
 
 				{/* Subtitle */}
