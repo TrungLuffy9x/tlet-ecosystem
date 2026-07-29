@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Menu, X, ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Menu, X, ExternalLink, Code2 } from "lucide-react";
 
 interface NavbarProps {
 	onRequestOpen: () => void;
@@ -17,7 +18,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestOpen }) => {
 				</a>
 
 				{/* Center Desktop Navigation Menu */}
-				<nav className="hidden lg:flex items-center gap-8 text-sm font-semibold">
+				<nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
 					<a href="#services" className="text-slate-300 hover:text-primary transition-colors">
 						<span>Dịch vụ</span>
 					</a>
@@ -30,20 +31,32 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestOpen }) => {
 					<a href="#faq" className="text-slate-300 hover:text-primary transition-colors">
 						<span>FAQ</span>
 					</a>
+					<Link to="/web-design" className="text-cyan-300 hover:text-cyan-400 transition-colors flex items-center gap-1 font-bold">
+						<Code2 size={15} />
+						<span>Thiết Kế Web</span>
+					</Link>
 				</nav>
 
 				{/* Right Action Buttons */}
 				<div className="hidden sm:flex items-center gap-2.5">
+					<Link
+						to="/web-design"
+						className="px-3.5 py-1.5 text-xs font-semibold text-cyan-300 hover:text-white bg-slate-900 hover:bg-slate-850 border border-cyan-500/30 rounded-full transition-all flex items-center gap-1"
+					>
+						<Code2 size={13} />
+						<span>Dịch vụ Web</span>
+					</Link>
+
 					<button
 						onClick={onRequestOpen}
-						className="px-4 py-1.5 text-xs font-semibold text-slate-300 hover:text-primary bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-primary/50 rounded-full transition-all active:scale-95"
+						className="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-primary bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-primary/50 rounded-full transition-all active:scale-95"
 					>
 						Request Content
 					</button>
 
 					<a
 						href="#services"
-						className="px-4.5 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 rounded-full shadow-md shadow-rose-500/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-1.5"
+						className="px-4 py-1.5 text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 rounded-full shadow-md shadow-rose-500/20 hover:scale-105 transition-all active:scale-95 flex items-center gap-1"
 					>
 						<span>Trải nghiệm</span>
 						<ExternalLink size={13} />
@@ -90,6 +103,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onRequestOpen }) => {
 					>
 						FAQ
 					</a>
+					<Link
+						to="/web-design"
+						onClick={() => setMobileMenuOpen(false)}
+						className="block py-2 px-3 rounded-lg text-cyan-300 hover:bg-slate-900 text-sm font-bold"
+					>
+						Trang Thiết Kế Web
+					</Link>
 					<div className="pt-2 border-t border-slate-900 flex gap-2">
 						<button
 							onClick={() => {

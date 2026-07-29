@@ -23,7 +23,7 @@ export const HeroSection: React.FC = () => {
 
 				{/* Super Title matching tlettruyen h1 styling */}
 				<h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
-					SIÊU HỆ SINH THÁI GIẢI TRÍ ĐỈNH CAO
+					Hệ sinh thái Tlét
 				</h1>
 
 				{/* Subtitle */}
