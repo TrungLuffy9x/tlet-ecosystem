@@ -11,9 +11,16 @@ import { FaqSection } from "../components/FaqSection";
 import { Footer } from "../components/Footer";
 import { ConsultationModal } from "../components/ConsultationModal";
 import { FirefliesCanvas } from "../components/FirefliesCanvas";
+import { useDocumentMetadata } from "../hooks/useDocumentMetadata";
 
 export const WebDesignPage: React.FC = () => {
 	const [consultationModalOpen, setConsultationModalOpen] = useState(false);
+
+	// Dynamic Meta Title & Description for Web Design Route
+	useDocumentMetadata({
+		title: "Dịch Vụ Thiết Kế Web Cao Cấp • Tlét Ecosystem",
+		description: "Dịch vụ thiết kế Website & Web App PWA chuyên nghiệp thế hệ mới. Giao diện sang trọng, tốc độ xé gió, tối ưu SEO Google 95+, bảo hành trọn đời lỗi kỹ thuật."
+	});
 
 	return (
 		<div className="relative min-h-screen bg-slate-900 text-slate-300 overflow-x-clip font-sans flex flex-col justify-between">
