@@ -16,7 +16,7 @@ export const WebDesignPage: React.FC = () => {
 	const [consultationModalOpen, setConsultationModalOpen] = useState(false);
 
 	return (
-		<div className="relative min-h-screen bg-slate-900 text-slate-300 overflow-x-hidden font-sans flex flex-col justify-between">
+		<div className="relative min-h-screen bg-slate-900 text-slate-300 overflow-x-clip font-sans flex flex-col justify-between">
 			{/* Ambient Fireflies Particle Background */}
 			<FirefliesCanvas />
 
