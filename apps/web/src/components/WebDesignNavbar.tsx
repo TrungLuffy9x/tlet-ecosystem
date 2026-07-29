@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, PhoneCall, Sparkles, ArrowLeft } from "lucide-react";
 
@@ -8,19 +8,38 @@ interface WebDesignNavbarProps {
 
 export const WebDesignNavbar: React.FC<WebDesignNavbarProps> = ({ onConsultationOpen }) => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 20) {
+				setScrolled(true);
+			} else {
+				setScrolled(false);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	return (
-		<header className="sticky top-0 z-[999] bg-slate-950/90 border-b border-slate-800 backdrop-blur-md shadow-md">
-			<div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
-				{/* Brand Logo & Agency Badge */}
-				<div className="flex items-center gap-3 shrink-0">
-					<Link to="/" className="flex items-center gap-2 group" aria-label="Tlét Home">
-						<img src="/TletFit.png" alt="Tlét Logo" className="h-9 w-auto object-contain group-hover:scale-105 transition-transform" />
-					</Link>
-					<span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 uppercase tracking-wider hidden sm:inline-block">
-						Web Agency
-					</span>
-				</div>
+		<header
+			className={`sticky top-0 z-[999] transition-all duration-300 ${
+				scrolled
+					? "bg-slate-950/95 backdrop-blur-xl border-b border-cyan-500/20 shadow-xl shadow-cyan-950/20 py-2"
+					: "bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 py-3.5"
+			}`}
+		>
+			<div className="container mx-auto px-4 flex items-center justify-between gap-4 transition-all duration-300">
+				{/* Brand Logo (Removed Web Agency Badge as requested) */}
+				<Link to="/" className="flex items-center gap-2 transition-colors shrink-0 group" aria-label="Tlét Home">
+					<img
+						src="/TletFit.png"
+						alt="Tlét Logo"
+						className={`w-auto object-contain transition-all duration-300 group-hover:scale-105 ${scrolled ? "h-8" : "h-9.5"}`}
+					/>
+				</Link>
 
 				{/* Desktop Navigation Links */}
 				<nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
@@ -37,7 +56,7 @@ export const WebDesignNavbar: React.FC<WebDesignNavbarProps> = ({ onConsultation
 						<span>Quy trình</span>
 					</a>
 					<a href="#web-calculator" className="text-slate-300 hover:text-cyan-400 transition-colors flex items-center gap-1 text-cyan-300 font-bold">
-						<Sparkles size={14} className="text-cyan-400" />
+						<Sparkles size={14} className="text-cyan-400 animate-pulse" />
 						<span>Dự toán chi phí</span>
 					</a>
 				</nav>

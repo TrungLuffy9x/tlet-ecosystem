@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ExternalLink, Code2 } from "lucide-react";
 
@@ -8,13 +8,37 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onRequestOpen }) => {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 20) {
+				setScrolled(true);
+			} else {
+				setScrolled(false);
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	return (
-		<header className="sticky top-0 z-[999] bg-slate-950/90 border-b border-slate-800 backdrop-blur-md shadow-md">
-			<div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
+		<header
+			className={`sticky top-0 z-[999] transition-all duration-300 ${
+				scrolled
+					? "bg-slate-950/95 backdrop-blur-xl border-b border-rose-500/20 shadow-xl shadow-rose-950/10 py-2"
+					: "bg-slate-950/80 backdrop-blur-md border-b border-slate-800/80 py-3.5"
+			}`}
+		>
+			<div className="container mx-auto px-4 flex items-center justify-between gap-4 transition-all duration-300">
 				{/* Logo Column */}
 				<a href="#" className="flex items-center transition-colors shrink-0 group" aria-label="Tlét Home">
-					<img src="/TletFit.png" alt="Tlét Logo" className="h-10 w-auto object-contain group-hover:scale-105 transition-transform" />
+					<img
+						src="/TletFit.png"
+						alt="Tlét Logo"
+						className={`w-auto object-contain transition-all duration-300 group-hover:scale-105 ${scrolled ? "h-8" : "h-9.5"}`}
+					/>
 				</a>
 
 				{/* Center Desktop Navigation Menu */}
