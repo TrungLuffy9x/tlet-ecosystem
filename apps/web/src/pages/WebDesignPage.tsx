@@ -47,7 +47,7 @@ export const WebDesignPage: React.FC = () => {
 				<WebDesignPortfolio />
 
 				{/* FAQ Section */}
-				<FaqSection />
+				<FaqSection accentColor="cyan" />
 			</main>
 
 			{/* Shared Ecosystem Footer */}

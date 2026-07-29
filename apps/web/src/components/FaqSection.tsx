@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
-export const FaqSection: React.FC = () => {
+interface FaqSectionProps {
+	accentColor?: "rose" | "cyan";
+}
+
+export const FaqSection: React.FC<FaqSectionProps> = ({ accentColor = "rose" }) => {
 	const [openIdx, setOpenIdx] = useState<number | null>(0);
+
+	const isCyan = accentColor === "cyan";
 
 	const faqs = [
 		{
@@ -32,7 +38,13 @@ export const FaqSection: React.FC = () => {
 			<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 				{/* Section Header */}
 				<div className="text-center mb-14 space-y-4">
-					<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-primary text-xs font-bold uppercase tracking-wider">
+					<div
+						className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
+							isCyan
+								? "bg-cyan-500/10 border border-cyan-500/30 text-cyan-400"
+								: "bg-rose-500/10 border border-rose-500/30 text-primary"
+						}`}
+					>
 						<HelpCircle size={14} />
 						<span>Giải Đáp Thắc Mắc</span>
 					</div>
@@ -52,10 +64,20 @@ export const FaqSection: React.FC = () => {
 							>
 								<button
 									onClick={() => setOpenIdx(isOpen ? null : idx)}
-									className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-200 text-base sm:text-lg hover:text-primary transition-colors"
+									className={`w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-base sm:text-lg transition-colors ${
+										isOpen
+											? isCyan ? "text-cyan-400" : "text-primary"
+											: isCyan ? "text-slate-200 hover:text-cyan-400" : "text-slate-200 hover:text-primary"
+									}`}
 								>
 									<span>{item.q}</span>
-									<div className={`p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 transition-transform duration-300 ${isOpen ? "rotate-180 text-primary" : ""}`}>
+									<div
+										className={`p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 transition-transform duration-300 ${
+											isOpen
+												? isCyan ? "rotate-180 text-cyan-400 border-cyan-500/40" : "rotate-180 text-primary border-rose-500/40"
+												: ""
+										}`}
+									>
 										<ChevronDown size={18} />
 									</div>
 								</button>
