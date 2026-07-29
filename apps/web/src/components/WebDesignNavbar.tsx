@@ -32,7 +32,7 @@ export const WebDesignNavbar: React.FC<WebDesignNavbarProps> = ({ onConsultation
 			}`}
 		>
 			<div className="container mx-auto px-4 flex items-center justify-between gap-4 transition-all duration-300">
-				{/* Brand Logo (Removed Web Agency Badge as requested) */}
+				{/* Brand Logo */}
 				<Link to="/" className="flex items-center gap-2 transition-colors shrink-0 group" aria-label="Tlét Home">
 					<img
 						src="/TletFit.png"
@@ -62,13 +62,13 @@ export const WebDesignNavbar: React.FC<WebDesignNavbarProps> = ({ onConsultation
 				</nav>
 
 				{/* Right Action Buttons */}
-				<div className="hidden sm:flex items-center gap-3">
+				<div className="hidden sm:flex items-center gap-2.5">
 					<Link
 						to="/"
-						className="px-3.5 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-full transition-all flex items-center gap-1.5"
+						className="px-4 py-1.5 text-xs font-bold text-primary bg-slate-900 border border-rose-500/30 rounded-full transition-transform duration-200 flex items-center gap-1.5 hover:scale-105 active:scale-95"
 					>
 						<ArrowLeft size={13} />
-						<span>Trang Hệ Sinh Thái</span>
+						<span>Hệ Sinh Thái</span>
 					</Link>
 
 					<button
@@ -139,9 +139,9 @@ export const WebDesignNavbar: React.FC<WebDesignNavbarProps> = ({ onConsultation
 						</button>
 						<Link
 							to="/"
-							className="w-full text-center py-2 bg-slate-900 border border-slate-800 text-slate-300 text-xs font-semibold rounded-full"
+							className="w-full text-center py-2 bg-slate-900 border border-rose-500/30 text-primary text-xs font-bold rounded-full"
 						>
-							Quay về trang Hệ Sinh Thái
+							Về Trang Hệ Sinh Thái
 						</Link>
 					</div>
 				</div>
