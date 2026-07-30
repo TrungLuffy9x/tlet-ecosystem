@@ -41,11 +41,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ accentColor = "rose", cu
 		}
 	];
 
-	// Web Design & Development FAQs (used when accentColor === "cyan")
+	// Web Design & Development FAQs - 10 Comprehensive Questions (used when accentColor === "cyan")
 	const webDesignFaqs: FaqItem[] = [
 		{
 			q: "Thời gian hoàn thiện và bàn giao một website / web app là bao lâu?",
 			a: "Thời gian trung bình từ 3 - 7 ngày đối với trang Landing Page / Web App PWA tiêu chuẩn. Với các hệ thống Full-stack Doanh nghiệp lớn có yêu cầu tùy biến cao, thời gian hoàn thiện từ 10 - 15 ngày."
+		},
+		{
+			q: "Tôi có được bàn giao toàn bộ mã nguồn (Source Code) gốc của website không?",
+			a: "CÓ! Sau khi nghiệm thu dự án và hoàn tất bàn giao, bạn sở hữu 100% bản quyền mã nguồn gốc (Source Code React/TypeScript). Bạn hoàn toàn có quyền lưu trữ, di chuyển máy chủ hoặc nâng cấp tự do mà không bị phụ thuộc vào bên thứ ba."
 		},
 		{
 			q: "Sau khi bàn giao, tôi có tự quản lý và cập nhật nội dung website được không?",
@@ -62,6 +66,18 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ accentColor = "rose", cu
 		{
 			q: "Website của tôi có đạt chuẩn SEO Google và hiển thị mượt trên di động không?",
 			a: "100% TẤT CẢ sản phẩm đều được tối ưu điểm SEO Google Lighthouse 95+, cấu hình Responsive tương thích hoàn hảo từ điện thoại, iPad đến màn hình 4K và đạt tốc độ tải dưới 0.5s."
+		},
+		{
+			q: "Website có tích hợp sẵn các công cụ đo lường và theo dõi lượt truy cập không?",
+			a: "CÓ! Chúng tôi hỗ trợ tích hợp sẵn Google Analytics 4, Google Search Console, Facebook Pixel, Zalo Official Account và các công cụ theo dõi hành vi khách hàng giúp bạn tối ưu chiến dịch Marketing ngay sau khi ra mắt."
+		},
+		{
+			q: "Nếu tôi đã có sẵn Tên miền (Domain) và Hosting thì có được giảm chi phí không?",
+			a: "CÓ! Trường hợp bạn đã sở hữu sẵn Tên miền hoặc Server riêng, chúng tôi sẽ khấu trừ thẳng chi phí dịch vụ hạ tầng tương ứng vào gói hợp đồng và hỗ trợ bạn trỏ DNS, deploy hệ thống miễn phí."
+		},
+		{
+			q: "Công nghệ PWA (Progressive Web App) có ưu điểm gì vượt trội so với website truyền thống?",
+			a: "PWA cho phép website hoạt động như một App di động thực thụ: Khách hàng có thể bấm cài đặt ngay lên màn hình điện thoại iOS/Android chỉ với 1-Click mà không cần thông qua App Store hay Google Play, tải trang siêu tốc 60fps và nhận thông báo Push Notification."
 		},
 		{
 			q: "Làm thế nào để bắt đầu đăng ký tư vấn và nhận báo giá làm web?",
